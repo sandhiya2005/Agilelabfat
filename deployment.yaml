@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: gold-container
-        image: YOUR_DOCKERHUB_USERNAME/gold-rate-app:latest # Replace with your username
+        image: sanvish2005/gold-rate-app:latest # Replace with your username
         ports:
         - containerPort: 80
 ---
