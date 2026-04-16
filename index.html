@@ -2,10 +2,11 @@
 <html>
 <head>
     <title>Gold Rate Statistics</title>
+    <!-- Ensure Chart.js is loaded -->
     <script src="https://jsdelivr.net"></script>
     <style>
-        body { font-family: sans-serif; text-align: center; }
-        .chart-container { width: 80%; margin: auto; }
+        body { font-family: sans-serif; text-align: center; background-color: #f4f4f9; padding: 20px; }
+        .chart-container { width: 80%; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -15,9 +16,10 @@
     </div>
     <script>
         const ctx = document.getElementById('goldChart').getContext('2d');
-        // Sample static data for demonstration; in a real app, use fetch() to an API
+        
+        // Data for the graph
         const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
-        const prices = [2300, 2350, 2400, 2500, 2450, 2600, 2650, 2700, 2800, 2750, 2900, 2950];
+        const prices = [2300, 2350, 2400, 2380, 2450, 2500, 2600, 2650, 2700, 2750, 2800, 2850];
 
         new Chart(ctx, {
             type: 'line',
@@ -26,9 +28,18 @@
                 datasets: [{
                     label: 'Gold Price (USD/oz)',
                     data: prices,
-                    borderColor: 'gold',
-                    fill: false
+                    borderColor: '#d4af37', // Gold color
+                    backgroundColor: 'rgba(212, 175, 55, 0.2)',
+                    borderWidth: 3,
+                    tension: 0.3, // Smoothes the line
+                    fill: true
                 }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: false }
+                }
             }
         });
     </script>
