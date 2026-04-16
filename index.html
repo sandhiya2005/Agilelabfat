@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gold Rate Statistics (No Library)</title>
+    <title>Gold Rate Statistics </title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; text-align: center; background-color: #121212; color: white; padding: 20px; }
         .chart-container { width: 85%; max-width: 800px; margin: 40px auto; background: #1e1e1e; padding: 20px; border-radius: 15px; border: 1px solid #333; }
@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-    <h1>Gold Rate Statistics (Native Canvas)</h1>
+    <h1>Gold Rate Statistics </h1>
     <div class="chart-container">
         <canvas id="goldCanvas" width="800" height="400"></canvas>
     </div>
@@ -20,18 +20,18 @@
             const canvas = document.getElementById('goldCanvas');
             const ctx = canvas.getContext('2d');
             
-            // Data
+            
             const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
             const prices = [1900, 1950, 1920, 2000, 2100, 2050, 2150, 2200, 2350, 2300, 2400, 2380];
 
-            // Graph Settings
+            
             const padding = 50;
             const width = canvas.width - padding * 2;
             const height = canvas.height - padding * 2;
             const maxPrice = Math.max(...prices);
             const minPrice = Math.min(...prices);
 
-            // Draw Background Grid
+            
             ctx.strokeStyle = '#333';
             ctx.beginPath();
             for(let i=0; i<=5; i++) {
@@ -41,7 +41,7 @@
             }
             ctx.stroke();
 
-            // Draw the Gold Line
+            
             ctx.strokeStyle = '#d4af37';
             ctx.lineWidth = 4;
             ctx.lineJoin = 'round';
@@ -54,13 +54,13 @@
                 if (i === 0) ctx.moveTo(x, y);
                 else ctx.lineTo(x, y);
                 
-                // Draw Labels
+                
                 ctx.fillStyle = 'white';
                 ctx.fillText(labels[i], x - 10, canvas.height - 20);
             });
             ctx.stroke();
 
-            // Add text for values
+            
             ctx.fillStyle = '#d4af37';
             ctx.font = '16px Arial';
             ctx.fillText("Price (USD/oz)", 10, 30);
