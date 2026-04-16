@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gold Rate Statistics</title>
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        body { font-family: sans-serif; text-align: center; }
+        .chart-container { width: 80%; margin: auto; }
+    </style>
+</head>
+<body>
+    <h1>Gold Rate (Last 12 Months)</h1>
+    <div class="chart-container">
+        <canvas id="goldChart"></canvas>
+    </div>
+    <script>
+        const ctx = document.getElementById('goldChart').getContext('2d');
+        // Sample static data for demonstration; in a real app, use fetch() to an API
+        const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
+        const prices = [2300, 2350, 2400, 2500, 2450, 2600, 2650, 2700, 2800, 2750, 2900, 2950];
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Gold Price (USD/oz)',
+                    data: prices,
+                    borderColor: 'gold',
+                    fill: false
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

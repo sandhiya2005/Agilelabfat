@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gold-rate-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gold-app
+  template:
+    metadata:
+      labels:
+        app: gold-app
+    spec:
+      containers:
+      - name: gold-container
+        image: YOUR_DOCKERHUB_USERNAME/gold-rate-app:latest # Replace with your username
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gold-service
+spec:
+  type: NodePort
+  selector:
+    app: gold-app
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30007 # Access the app via <Node-IP>:30001
