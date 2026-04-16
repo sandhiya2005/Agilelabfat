@@ -4,36 +4,49 @@
     <title>Gold Rate Statistics</title>
     <script src="https://jsdelivr.net"></script>
     <style>
-        body { font-family: sans-serif; text-align: center; background-color: #f4f4f4; padding: 20px; }
-        .chart-container { width: 80%; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; background-color: #121212; color: white; padding: 20px; }
+        .chart-container { width: 85%; max-width: 900px; margin: 40px auto; background: #1e1e1e; padding: 20px; border-radius: 15px; border: 1px solid #333; }
+        h1 { color: #d4af37; }
     </style>
 </head>
 <body>
-    <h1>Gold Rate (Last 12 Months)</h1>
+    <h1>Gold Rate Statistics (Annual)</h1>
     <div class="chart-container">
         <canvas id="goldChart"></canvas>
     </div>
-    <script>
-        const ctx = document.getElementById('goldChart').getContext('2d');
-        const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
-        
-        // This array MUST have numbers inside it!
-        const prices = [1900, 1950, 1920, 1880, 1930, 1980, 2010, 2050, 2030, 2100, 2200, 2350];
 
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Gold Price (USD/oz)',
-                    data: prices,
-                    borderColor: '#d4af37',
-                    backgroundColor: 'rgba(212, 175, 55, 0.2)',
-                    fill: true,
-                    tension: 0.3
-                }]
-            }
-        });
+    <script>
+        // Use a window listener to ensure the script runs AFTER the page loads
+        window.onload = function() {
+            const ctx = document.getElementById('goldChart').getContext('2d');
+            
+            // Hardcoded data to ensure it works immediately
+            const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
+            const prices =;
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Gold Price (USD/oz)',
+                        data: prices,
+                        borderColor: '#d4af37',
+                        backgroundColor: 'rgba(212, 175, 55, 0.2)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { grid: { color: '#333' }, ticks: { color: '#fff' } },
+                        x: { grid: { color: '#333' }, ticks: { color: '#fff' } }
+                    }
+                }
+            });
+        };
     </script>
 </body>
 </html>
