@@ -4,22 +4,21 @@
     <title>Gold Rate Statistics</title>
     <script src="https://jsdelivr.net"></script>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; text-align: center; background-color: #121212; color: white; padding: 20px; }
-        .chart-container { width: 80%; max-width: 900px; margin: auto; background: #1e1e1e; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #d4af37; margin-bottom: 30px; }
+        body { font-family: sans-serif; text-align: center; background-color: #f4f4f4; padding: 20px; }
+        .chart-container { width: 80%; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
-    <h1>Gold Rate Statistics (Annual)</h1>
+    <h1>Gold Rate (Last 12 Months)</h1>
     <div class="chart-container">
         <canvas id="goldChart"></canvas>
     </div>
     <script>
         const ctx = document.getElementById('goldChart').getContext('2d');
-        
-        // Data for the graph
         const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
-        const prices = [1950, 1920, 1965, 1915, 1870, 1980, 2040, 2060, 2030, 2015, 2160, 2330];
+        
+        // This array MUST have numbers inside it!
+        const prices = [1900, 1950, 1920, 1880, 1930, 1980, 2010, 2050, 2030, 2100, 2200, 2350];
 
         new Chart(ctx, {
             type: 'line',
@@ -30,18 +29,9 @@
                     data: prices,
                     borderColor: '#d4af37',
                     backgroundColor: 'rgba(212, 175, 55, 0.2)',
-                    borderWidth: 4,
-                    pointBackgroundColor: '#fff',
-                    tension: 0.4,
-                    fill: true
+                    fill: true,
+                    tension: 0.3
                 }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { grid: { color: '#333' }, ticks: { color: '#aaa' } },
-                    x: { grid: { color: '#333' }, ticks: { color: '#aaa' } }
-                }
             }
         });
     </script>
