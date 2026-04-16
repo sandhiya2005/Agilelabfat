@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: gold-container
-        image: sanvish2005/gold-rate-app:latest # Replace with your username
+        image: sanvish2005/web-app:latest # Matched to your Jenkins build
         ports:
         - containerPort: 80
 ---
@@ -29,4 +29,4 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 30007 # Access the app via <Node-IP>:30001
+      nodePort: 30007 # Fixed the port number
